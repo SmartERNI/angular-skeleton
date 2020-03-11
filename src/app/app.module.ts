@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {StationClocksComponent} from './station-clocks/station-clocks.component';
 import {HttpClientModule} from '@angular/common/http';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,8 @@ import {HttpClientModule} from '@angular/common/http';
         BrowserModule,
         AppRoutingModule,
         NgbModule,
-        HttpClientModule
+        HttpClientModule,
+        FontAwesomeModule
     ],
     providers: [],
     bootstrap: [AppComponent]

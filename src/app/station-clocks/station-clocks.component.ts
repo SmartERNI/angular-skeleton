@@ -3,6 +3,7 @@ import {ClocksService} from '../service/clocks.service';
 import {take} from 'rxjs/operators';
 import {Clock} from '../model/clock';
 import {ClocksView} from '../model/clocks-view';
+import {faCaretDown, faCaretUp} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-station-clocks',
@@ -15,6 +16,10 @@ export class StationClocksComponent implements OnInit {
     public isLoadingError: boolean;
     public allClocks: Clock[];
     public sortedFilteredAccumulatedClocks: ClocksView[];
+    public faCaretDown = faCaretDown;
+    public faCaretUp = faCaretUp;
+    public sortByNameDescending: boolean;
+    public sortByNumberDescending: boolean;
 
     constructor(private clocksService: ClocksService) {
     }
@@ -23,6 +28,8 @@ export class StationClocksComponent implements OnInit {
         this.isLoadingData = true;
         this.isLoadingError = false;
         this.sortedFilteredAccumulatedClocks = [];
+        this.sortByNameDescending = true;
+        this.sortByNumberDescending = true;
         this.loadData();
     }
 
@@ -68,6 +75,36 @@ export class StationClocksComponent implements OnInit {
                 return b.number - a.number;
             }
         });
+    }
+
+    sortByName(): void {
+        this.sortedFilteredAccumulatedClocks.sort((a, b) => {
+            if (a.name === b.name) {
+                return 0;
+            } else {
+                if (this.sortByNameDescending) {
+                    return a.name.localeCompare(b.name);
+                } else {
+                    return b.name.localeCompare(a.name);
+                }
+            }
+        });
+        this.sortByNameDescending = !this.sortByNameDescending;
+    }
+
+    sortByNumber(): void {
+        this.sortedFilteredAccumulatedClocks.sort((a, b) => {
+            if (a.number === b.number) {
+                return 0;
+            } else {
+                if (this.sortByNumberDescending) {
+                    return a.number - b.number;
+                } else {
+                    return b.number - a.number;
+                }
+            }
+        });
+        this.sortByNumberDescending = !this.sortByNumberDescending;
     }
 
     private getSortedClockView(): ClocksView[] {

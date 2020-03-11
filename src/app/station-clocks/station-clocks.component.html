@@ -3,8 +3,16 @@
 </div>
 <div *ngIf="!isLoadingData && !isLoadingError" class="mt-5">
     <div class="row background-darkblue pt-1 pb-1">
-        <div class="col-7"><strong>Name Betriebspunkt</strong></div>
-        <div class="col-5"><strong>Anzahl beleuchtete Uhren</strong></div>
+        <div (click)="sortByName()" class="col-7">
+            <strong>Name Betriebspunkt</strong>
+            <fa-icon *ngIf="!sortByNameDescending" [icon]="faCaretDown" class="float-right"></fa-icon>
+            <fa-icon *ngIf="sortByNameDescending" [icon]="faCaretUp" class="float-right"></fa-icon>
+        </div>
+        <div (click)="sortByNumber()" class="col-5">
+            <strong>Anzahl beleuchtete Uhren</strong>
+            <fa-icon *ngIf="!sortByNumberDescending" [icon]="faCaretDown" class="float-right"></fa-icon>
+            <fa-icon *ngIf="sortByNumberDescending" [icon]="faCaretUp" class="float-right"></fa-icon>
+        </div>
     </div>
     <div *ngFor="let clock of sortedFilteredAccumulatedClocks; let odd = odd"
          [ngClass]="odd ? 'table-row-lightblue' : ''" class="row">
