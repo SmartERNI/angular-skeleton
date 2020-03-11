@@ -39,23 +39,13 @@ export class StationWatchesComponent implements OnInit {
             });
     }
 
-    private getSortedClockView(): ClocksView[] {
-        const onlyLitClocks = this.filterNonLitClocks(this.allClocks);
-        const accumulatedClocks = this.accumulateClocksByNameAndGenerateClocksView(onlyLitClocks);
-        return this.sortClocksViewsByNumberDescending(accumulatedClocks);
-    }
-
-    private filterNonLitClocks(clocks: Clock[]): Clock[] {
+    filterNonLitClocks(clocks: Clock[]): Clock[] {
         let clocksCopy = Array.from(clocks);
         clocksCopy = clocksCopy.filter(this.isLit);
         return clocksCopy;
     }
 
-    private isLit(element: Clock) {
-        return element.isLit;
-    }
-
-    private accumulateClocksByNameAndGenerateClocksView(clocks: Clock[]): ClocksView[] {
+    accumulateClocksByNameAndGenerateClocksView(clocks: Clock[]): ClocksView[] {
         const clocksViews = [] as ClocksView[];
         clocks.forEach(clock => {
             if (clocksViews.find(c => c.name === clock.name)) {
@@ -70,7 +60,7 @@ export class StationWatchesComponent implements OnInit {
         return clocksViews;
     }
 
-    private sortClocksViewsByNumberDescending(clocksViews: ClocksView[]): ClocksView[] {
+    sortClocksViewsByNumberDescending(clocksViews: ClocksView[]): ClocksView[] {
         return clocksViews.sort((a, b) => {
             if (a.number === b.number) {
                 return 0;
@@ -78,5 +68,15 @@ export class StationWatchesComponent implements OnInit {
                 return b.number - a.number;
             }
         });
+    }
+
+    private getSortedClockView(): ClocksView[] {
+        const onlyLitClocks = this.filterNonLitClocks(this.allClocks);
+        const accumulatedClocks = this.accumulateClocksByNameAndGenerateClocksView(onlyLitClocks);
+        return this.sortClocksViewsByNumberDescending(accumulatedClocks);
+    }
+
+    private isLit(element: Clock) {
+        return element.isLit;
     }
 }
