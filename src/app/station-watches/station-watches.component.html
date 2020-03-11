@@ -2,11 +2,12 @@
     <div class="row">Loading data...</div>
 </div>
 <div *ngIf="!isLoadingData && !isLoadingError" class="mt-5">
-    <div class="row">
+    <div class="row background-darkblue pt-1 pb-1">
         <div class="col-7"><strong>Name Betriebspunkt</strong></div>
         <div class="col-5"><strong>Anzahl beleuchtete Uhren</strong></div>
     </div>
-    <div *ngFor="let clock of sortedFilteredAccumulatedClocks" class="row">
+    <div *ngFor="let clock of sortedFilteredAccumulatedClocks; let odd = odd"
+         [ngClass]="odd ? 'table-row-lightblue' : ''" class="row">
         <div class="col-7">{{clock.name}}</div>
         <div class="col-5">{{clock.number}}</div>
     </div>
