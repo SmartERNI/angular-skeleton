@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
-  baseUrlExampleService: 'https://betterask.erni'
+    production: true,
+    baseUrlClocksService: 'http://localhost:8080/clocks'
 };
