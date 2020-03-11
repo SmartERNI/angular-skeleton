@@ -5,11 +5,11 @@ import {Clock} from '../model/clock';
 import {ClocksView} from '../model/clocks-view';
 
 @Component({
-    selector: 'app-station-watches',
-    templateUrl: './station-watches.component.html',
-    styleUrls: ['./station-watches.component.scss']
+    selector: 'app-station-clocks',
+    templateUrl: './station-clocks.component.html',
+    styleUrls: ['./station-clocks.component.scss']
 })
-export class StationWatchesComponent implements OnInit {
+export class StationClocksComponent implements OnInit {
 
     public isLoadingData: boolean;
     public isLoadingError: boolean;

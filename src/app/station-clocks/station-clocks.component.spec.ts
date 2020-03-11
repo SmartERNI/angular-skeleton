@@ -1,24 +1,24 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {StationWatchesComponent} from './station-watches.component';
+import {StationClocksComponent} from './station-clocks.component';
 import {Clock} from '../model/clock';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {ClocksView} from '../model/clocks-view';
 
-describe('StationWatchesComponent', () => {
-    let component: StationWatchesComponent;
-    let fixture: ComponentFixture<StationWatchesComponent>;
+describe('StationClocksComponent', () => {
+    let component: StationClocksComponent;
+    let fixture: ComponentFixture<StationClocksComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [StationWatchesComponent],
+            declarations: [StationClocksComponent],
             imports: [HttpClientTestingModule]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(StationWatchesComponent);
+        fixture = TestBed.createComponent(StationClocksComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
