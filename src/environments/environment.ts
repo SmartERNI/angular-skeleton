@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  baseUrlExampleService: 'https://betterask.erni'
+    production: false,
+    baseUrlClocksService: 'http://localhost:8080/clocks'
 };
 
 /*
